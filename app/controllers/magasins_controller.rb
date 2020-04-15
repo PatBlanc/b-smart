@@ -1,2 +1,0 @@
-class MagasinsController < ApplicationController
-end
