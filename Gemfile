@@ -8,7 +8,7 @@ gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
-gem 'rails', '5.2.4.2'
+gem 'rails'
 gem 'redis'
 
 gem 'autoprefixer-rails'
