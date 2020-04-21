@@ -2,6 +2,7 @@
   "name": "b-smart",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.4.1",
+    "typed.js": "^2.0.11"
   }
 }
