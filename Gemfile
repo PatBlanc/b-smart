@@ -2,14 +2,13 @@ source 'https://rubygems.org'
 ruby '2.6.5'
 
 gem 'sqlite3'
-gem "actionview", ">= 5.2.4.2"
 
 gem 'materialize-sass'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
-gem 'rails', '5.2.4.1'
+gem 'rails', '5.2.4.2'
 gem 'redis'
 
 gem 'autoprefixer-rails'
