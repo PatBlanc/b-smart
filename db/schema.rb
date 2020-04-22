@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_20_111115) do
+ActiveRecord::Schema.define(version: 2020_04_22_122500) do
+
+  create_table "managers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "id_store"
+    t.boolean "main", default: true
+    t.string "email", default: "", null: false
+    t.string "phone"
+    t.datetime "vacation_start"
+    t.datetime "vacation_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "stores", force: :cascade do |t|
     t.string "name"
