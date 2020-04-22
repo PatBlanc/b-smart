@@ -1,5 +1,4 @@
 class StoresController < ApplicationController
-
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -17,7 +16,6 @@ class StoresController < ApplicationController
 
   def update
     @store.update(store_params)
-
   end
 
   def edit; end
