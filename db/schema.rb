@@ -34,12 +34,6 @@ ActiveRecord::Schema.define(version: 2020_04_14_155039) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "company"
-    t.string "phone"
-    t.string "address"
-    t.float "latitude"
-    t.float "longitute"
-    t.integer "vehicule_id"
     t.integer "sash_id"
     t.integer "level", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
