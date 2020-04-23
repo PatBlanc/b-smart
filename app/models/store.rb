@@ -8,8 +8,4 @@ class Store < ApplicationRecord
   validates :address, presence: true
   validates :phone, presence: true, format: { with: /^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$/, multiline: true}
 
-
-  def index
-    @stores = Store.all
-  end
 end
