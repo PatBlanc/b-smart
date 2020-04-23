@@ -1,6 +1,7 @@
 require 'faker'
 
 puts "Reset users, stores and managers..."
+
 Store.destroy_all
 Manager.destroy_all
 User.destroy_all
@@ -18,7 +19,7 @@ patrick = User.create!(email: 'patrick@patrick.com', password: 'password', first
 sleep(1)
 
 users = [fred, frederique, fernanda, patrick]
-group = ["Leroy Merlin", "Castochama", "Auchian", "Ikeo", "FlyLikeABird", "Bricoranma"]
+group = ["Lareine Marlène", "Castochama", "Auchian", "Ikeo", "FlyLikeABird", "Bricoranma 1/2"]
 
 puts "Creating our managers..."
 
@@ -27,22 +28,21 @@ jeanrodolphe = Manager.create!(name: 'Jean-Rodolphe', phone: "0612345678")
 robert = Manager.create!(name: 'Robert', phone: "0612345678")
 jeanmouloud = Manager.create!(name: 'Jean-Mouloud', phone: "0612345678")
 
-manager = [jeanjacques, jeanrodolphe, robert, jeanmouloud]
+managers = [jeanjacques, jeanrodolphe, robert, jeanmouloud]
 
 puts "Creating our stores..."
 
 60.times do |i|
-  user = user.sample
+  user = users.sample
   store = Store.new(
     name: Faker::Commerce.product_name,
     group: group.sample,
     address: Faker::Address.full_address,
-    manager: manager.sample,
+    manager: managers.sample,
     deputy_manager: manager.sample,
-    purchase_date: Faker::Date.between(from: 3.years.ago, to: 2.years.ago),
-    discard_date: Faker::Date.between(from: 2.years.ago, to: Date.today)
+    user: user
   )
-  product.save
+  store.save
 end
 
 puts "Done !"
