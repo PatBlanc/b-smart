@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_122500) do
+ActiveRecord::Schema.define(version: 2020_04_23_102030) do
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "managers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "id_store"
-    t.boolean "main", default: true
-    t.string "email", default: "", null: false
+    t.boolean "main"
+    t.string "email"
     t.string "phone"
     t.datetime "vacation_start"
     t.datetime "vacation_end"
+    t.integer "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["store_id"], name: "index_managers_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -47,6 +53,8 @@ ActiveRecord::Schema.define(version: 2020_04_22_122500) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.string "phone"
     t.string "address"
     t.float "latitude"
@@ -55,6 +63,17 @@ ActiveRecord::Schema.define(version: 2020_04_22_122500) do
     t.string "company"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vehicules", force: :cascade do |t|
+    t.string "brand"
+    t.string "model"
+    t.string "license_plate"
+    t.string "fuel_type"
+    t.integer "engine_size"
+    t.integer "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

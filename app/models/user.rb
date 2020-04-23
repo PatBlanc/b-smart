@@ -10,9 +10,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  def drives
-    vehicules.map do |vehicule|
-      vehicule
+  # def drives
+  #   vehicules.map do |vehicule|
+  #     vehicule
 
-  end
+  # end
 end
