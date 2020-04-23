@@ -1,0 +1,5 @@
+<% @managers.each do |manager| %>
+  <h2><%= manager.name %></h2>
+  <h3><%= manager.store.name %></h3>
+  <p><%= manager.store.address %></p>
+<% end %>
