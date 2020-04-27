@@ -76,5 +76,4 @@ ActiveRecord::Schema.define(version: 2020_04_23_102030) do
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_vehicules_on_user_id"
   end
-
 end
