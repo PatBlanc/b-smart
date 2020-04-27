@@ -2,7 +2,11 @@ class ManagersController < ApplicationController
   before_action :set_store, only: [:show, :edit, :update, :destroy]
 
   def index
-    @managers = Manager.all
+    @managers = current_user.managers.all
+  end
+
+  def show
+    @proportion = Proportion.new
   end
 
   def new
@@ -11,21 +15,32 @@ class ManagersController < ApplicationController
 
   def create
     @manager = Manager.new(manager_params)
-    @manager.save
-  end
-
-  def update
-    @manager.update(manager_params)
+    @manager.store_id.user = current_user
+    if @manager.save
+      redirect_to manager_path(@manager)
+    else
+      render :new
+    end
   end
 
   def edit; end
 
-  def show; end
+  def update
+    if @manager.update(manager_params)
+      respond_to do |format|
+        format.html { redirect_to managers_path }
+        format.js
+      end
+    else
+      respond_to do |format|
+        format.html { render :edit }
+        format.js
+      end
+    end
+  end
 
   def destroy
     @manager.destroy
-
-    # no need for app/views/managers/destroy.html.erb
     redirect_to managers_path
   end
 
@@ -36,8 +51,6 @@ class ManagersController < ApplicationController
   end
 
   def manager_params
-    # *Strong params*: You need to *whitelist* what can be updated by the user
-    # Never trust user data!
-    params.require(:manager).permit(:name, :phone)
+    params.require(:manager).permit(:first_name, :last_name, :phone, :main, :email, :vacation_start, :vacation_end)
   end
 end

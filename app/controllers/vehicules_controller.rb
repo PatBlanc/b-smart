@@ -1,8 +1,12 @@
 class VehiculesController < ApplicationController
-  before_action :set_store, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @vehicules = Vehicule.all
+    @vehicules = current_user.vehicules.all
+  end
+
+  def show
+    @proportion = Proportion.new
   end
 
   def new
@@ -11,21 +15,32 @@ class VehiculesController < ApplicationController
 
   def create
     @vehicule = Vehicule.new(vehicule_params)
-    @vehicule.save
-  end
-
-  def update
-    @vehicule.update(vehicule_params)
+    @vehicule.user = current_user
+    if @vehicule.save
+      redirect_to vehicule_path(@vehicule)
+    else
+      render :new
+    end
   end
 
   def edit; end
 
-  def show; end
+  def update
+    if @vehicule.update(vehicule_params)
+      respond_to do |format|
+        format.html { redirect_to vehicules_path }
+        format.js
+      end
+      else
+        respond_to do |format|
+          format.html { render :edit }
+          format.js
+        end
+    end
+  end
 
   def destroy
     @vehicule.destroy
-
-    # no need for app/views/vehicules/destroy.html.erb
     redirect_to vehicules_path
   end
 
@@ -36,8 +51,6 @@ class VehiculesController < ApplicationController
   end
 
   def vehicule_params
-    # *Strong params*: You need to *whitelist* what can be updated by the user
-    # Never trust user data!
-    params.require(:vehicule).permit(:name, :phone)
+    params.require(:vehicule).permit(:brand, :model, :license_plate, :fuel_type, :engine_size, :year)
   end
 end

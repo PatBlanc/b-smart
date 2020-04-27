@@ -10,6 +10,7 @@ class CreateStores < ActiveRecord::Migration[5.2]
       t.string :deputy_manager
       t.string :phone
       t.string :email
+      t.integer :status, default: 1
 
       t.timestamps
     end
