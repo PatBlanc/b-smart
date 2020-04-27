@@ -8,7 +8,6 @@ User.destroy_all
 Vehicule.destroy_all
 Appointment.destroy_all
 
-
 puts "Creating our users..."
 
 fred = User.create!(email: 'fred@fred.com', password: 'password', first_name: "Frederic", last_name: "Vergara", address: "Marseille")
@@ -22,17 +21,6 @@ sleep(1)
 
 users = [fred, frederique, fernanda, patrick]
 
-puts "Creating our vehicules..."
-
-blanche = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "GPL", user: users.sample, year: rand(2009..2020))
-sleep(1)
-rouge = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "Diesel", user: users.sample, year: rand(2009..2020))
-sleep(1)
-noire = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "Essence", user: users.sample, year: rand(2009..2020))
-sleep(1)
-char = Vehicule.create!(brand: "Fiatch", model: "Dois", license_plate: "BY456FE", fuel_type: "Electrique", user: users.sample, year: rand(2009..2020))
-sleep(1)
-
 puts "Creating our managers..."
 
 jeanjacques = Manager.create!(first_name: 'Jean-Jacques', last_name: "Hommedor", phone: "0612345678")
@@ -44,6 +32,17 @@ sleep(1)
 jeanmouloud = Manager.create!(first_name: 'Jean-Mouloud', last_name: "Ouechkouzin", phone: "0612345678")
 sleep(1)
 managers = [jeanjacques, jeanrodolphe, robert, jeanmouloud]
+
+puts "Creating our vehicules..."
+
+blanche = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "GPL", user: users.sample, year: rand(2009..2020))
+sleep(1)
+rouge = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "Diesel", user: users.sample, year: rand(2009..2020))
+sleep(1)
+noire = Vehicule.create!(brand: "Reno", model: "Lagune", license_plate: "BY123FE", fuel_type: "Essence", user: users.sample, year: rand(2009..2020))
+sleep(1)
+char = Vehicule.create!(brand: "Fiatch", model: "Dois", license_plate: "BY456FE", fuel_type: "Electrique", user: users.sample, year: rand(2009..2020))
+sleep(1)
 
 puts "Creating our stores..."
 
